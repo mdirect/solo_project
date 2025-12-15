@@ -7,9 +7,10 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Routes element={<Layout />}>
+        <Route element={<Layout />}>
           <Route path="/" element={<MainPage />} />
-        </Routes>
+          {/* <Route path="/autorization" element={<AutorizationPage />} /> */}
+        </Route>
       </Routes>
     </BrowserRouter>
   );
