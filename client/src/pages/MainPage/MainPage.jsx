@@ -1,14 +1,21 @@
 import React from 'react';
-
-// export default function MainPage() {
-//   return (
-//     <div>
-//       <h1>Hello!</h1>
-//       <h2>lllll</h2>
-//     </div>
-//   );
-// }
+import Button from 'react-bootstrap/Button';
+import axios from 'axios';
 
 export default function MainPage() {
-  return <div>MainPage</div>;
+  const getCookieHandler = async () => {
+    try {
+      const response = await axios('http://localhost:3000/cookie');
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return (
+    <>
+      <h1>MainPage</h1>
+      <Button onClick={getCookieHandler()}>get cookies</Button>;
+    </>
+  );
 }
