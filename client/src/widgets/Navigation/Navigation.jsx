@@ -35,7 +35,7 @@ function Navigation({ user, setUser }) {
             <Navbar.Text>
               Вы вошли как:{" "}
               <Navbar.Brand href="/account">{user?.data?.name}</Navbar.Brand>
-              <Button onClick={logoutHandler}>
+              <Button className="logout_button" onClick={logoutHandler}>
                 <LogOut />
               </Button>
             </Navbar.Text>
