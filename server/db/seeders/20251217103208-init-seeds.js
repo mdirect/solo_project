@@ -9,9 +9,9 @@ module.exports = {
       'Users',
       [
         {
-          name: 'TestUser',
-          email: 'testUser@mail.ru',
-          password: await bcrypt.hash('123456', 10),
+          name: 'testUser',
+          email: 'test@ya.ru',
+          password: await bcrypt.hash('Qwerty1!', 10),
         },
       ],
       {},
@@ -25,20 +25,20 @@ module.exports = {
           word: 'React',
           description:
             'Компонент (библиотека, фреймворк) для разработки клиентской части веб-сайта',
-          tag: 'frontend',
+          tags: ['frontend'],
         },
         {
           userId: 1,
           word: 'Sequelize',
           description: 'Компонент для общения с базой данных в серверной части веб-сайта',
-          tag: 'db',
+          tags: ['db', 'server'],
         },
         {
           userId: 1,
           word: 'Morgan',
           description:
             'Компонент для получение логов в консоли в серверной части веб-сайта',
-          tag: 'backend',
+          tags: ['backend'],
         },
       ],
       {},

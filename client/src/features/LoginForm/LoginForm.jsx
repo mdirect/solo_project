@@ -3,8 +3,11 @@ import styles from "./LoginForm.module.css";
 import UserValidate from "../../entities/user/api/UserValidate";
 import UserApi from "../../entities/user/api/UserApi";
 import { setAccessToken } from "../../shared/lib/axiosInstance";
+import { useNavigate } from "react-router";
 
 function LoginForm({ setUser }) {
+  const navigate = useNavigate();
+
   const loginHandler = async (event) => {
     try {
       event.preventDefault();
@@ -16,6 +19,7 @@ function LoginForm({ setUser }) {
 
       setUser({ status: "logged", data: res.user });
       setAccessToken(res.accessToken);
+      navigate(`/skeletpage`);
     } catch (error) {
       console.log(error);
     }
@@ -25,8 +29,14 @@ function LoginForm({ setUser }) {
     <div className={styles.container}>
       <form className={styles.form} onSubmit={loginHandler}>
         <div className={styles.inputGroup}>
-          <div className={styles.inputLabel}>Электронная почта</div>
-          <input className={styles.input} name="email" type="email" required />
+          <div className={styles.inputLabel}>Логин</div>
+          <input
+            className={styles.input}
+            name="email"
+            type="email"
+            placeholder="Введите e-mail"
+            required
+          />
         </div>
         <div className={styles.inputGroup}>
           <div className={styles.inputLabel}>Пароль</div>
@@ -34,11 +44,18 @@ function LoginForm({ setUser }) {
             className={styles.input}
             name="password"
             type="password"
+            placeholder="Введите пароль"
             required
           />
         </div>
 
-        <button type="submit" className={styles.submitButton}>
+        <button
+          type="submit"
+          className={styles.submitButton}
+          onClick={() => {
+            navigate(`/skeletpage`);
+          }}
+        >
           Подтвердить
         </button>
       </form>

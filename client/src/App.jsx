@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import Layout from "./app/Layout/Layout";
 import MainPage from "./pages/MainPage";
 import AuthPage from "./pages/AuthPage";
+import SkeletPage from "./pages/SkeletPage";
+import AccountPage from "./pages/AccountPage";
 import axiosInstance, { setAccessToken } from "./shared/lib/axiosInstance";
 
 function App() {
@@ -28,6 +30,14 @@ function App() {
           <Route element={<Layout user={user} setUser={setUser} />}>
             <Route path="/" element={<MainPage user={user} />} />
             <Route path="/registery" element={<AuthPage setUser={setUser} />} />
+            <Route
+              path="/skeletpage"
+              element={<SkeletPage setUser={setUser} />}
+            />
+            <Route
+              path="/account"
+              element={<AccountPage user={user} setUser={setUser} />}
+            />
           </Route>
         </Routes>
       </BrowserRouter>

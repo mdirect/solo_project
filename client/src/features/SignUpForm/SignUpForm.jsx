@@ -4,6 +4,7 @@ import UserValidate from "../../entities/user/api/UserValidate";
 import UserApi from "../../entities/user/api/UserApi";
 import { useNavigate } from "react-router";
 import { setAccessToken } from "../../shared/lib/axiosInstance";
+import { AtSign, CircleUserRound, Lock, LockKeyhole } from "lucide-react";
 
 function SignUpForm({ setUser }) {
   const navigate = useNavigate();
@@ -28,28 +29,50 @@ function SignUpForm({ setUser }) {
     <div className={styles.container}>
       <form className={styles.form} onSubmit={signUpHandler}>
         <div className={styles.inputGroup}>
-          <div className={styles.inputLabel}>Имя</div>
-          <input className={styles.input} name="name" type="text" required />
-        </div>
-        <div className={styles.inputGroup}>
-          <div className={styles.inputLabel}>Электронная почта</div>
-          <input className={styles.input} name="email" type="email" required />
-        </div>
-        <div className={styles.inputGroup}>
-          <div className={styles.inputLabel}>Пароль</div>
+          <div className={styles.inputLabel}>
+            <CircleUserRound />
+          </div>
           <input
             className={styles.input}
-            name="password"
-            type="password"
+            name="name"
+            type="text"
+            placeholder="Введите имя"
             required
           />
         </div>
         <div className={styles.inputGroup}>
-          <div className={styles.inputLabel}>Повторите пароль</div>
+          <div className={styles.inputLabel}>
+            <AtSign />
+          </div>
+          <input
+            className={styles.input}
+            name="email"
+            type="email"
+            placeholder="Введите e-mail"
+            required
+          />
+        </div>
+        <div className={styles.inputGroup}>
+          <div className={styles.inputLabel}>
+            <Lock />
+          </div>
+          <input
+            className={styles.input}
+            name="password"
+            type="password"
+            placeholder="Введите пароль"
+            required
+          />
+        </div>
+        <div className={styles.inputGroup}>
+          <div className={styles.inputLabel}>
+            <LockKeyhole />
+          </div>
           <input
             className={styles.input}
             name="confirmPassword"
             type="password"
+            placeholder="Повторите пароль"
             required
           />
         </div>
@@ -57,7 +80,7 @@ function SignUpForm({ setUser }) {
           type="submit"
           className={styles.submitButton}
           onClick={() => {
-            navigate(`/dictionary`);
+            navigate(`/skeletpage`);
           }}
         >
           Подтвердить

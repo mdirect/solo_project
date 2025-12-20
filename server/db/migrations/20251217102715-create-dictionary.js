@@ -16,8 +16,9 @@ module.exports = {
       description: {
         type: Sequelize.TEXT,
       },
-      tag: {
-        type: Sequelize.STRING,
+      tags: {
+        type: Sequelize.ARRAY(Sequelize.TEXT),
+        defaultValue: [],
       },
       userId: {
         type: Sequelize.INTEGER,
