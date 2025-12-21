@@ -14,13 +14,13 @@ export default function SkeletCard({ skelet, onDelete, onUpdate }) {
           <Card.Title>{skelet.name}</Card.Title>
           <Card.Subtitle>{skelet.description}</Card.Subtitle>
           <Card.Text>{skelet.status}</Card.Text>
-          {!editSkelet ? (
+          {/* {!editSkelet ? (
             <EditForm skelet={skelet} showEditSkelet={showEditSkelet} onUpdate={onUpdate} />
-          ) : (
-            <Button onClick={showEditSkelet((prev) => !prev)}>
-              <SquarePen />
-            </Button>
-          )}
+          ) : ( */}
+          <Button onClick={() => {} /*showEditSkelet((prev) => !prev)*/}>
+            <SquarePen />
+          </Button>
+          {/* )} */}
 
           <Button onClick={onDelete}>
             <Trash />

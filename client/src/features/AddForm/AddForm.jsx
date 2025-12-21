@@ -34,9 +34,8 @@ function AddForm({ submitHandler }) {
           </Form.Label>
           <Col sm="4">
             <Form.Select aria-label="Статус" name="status">
-              <option>Выбери:</option>
-              <option value="true">Сделано</option>
               <option value="false">Не сделано</option>
+              <option value="true">Сделано</option>
             </Form.Select>
           </Col>
           <Col sm="6"></Col>
