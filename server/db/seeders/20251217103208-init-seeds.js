@@ -9,7 +9,7 @@ module.exports = {
       'Users',
       [
         {
-          name: 'testUser',
+          name: 'Дарья',
           email: 'test@ya.ru',
           password: await bcrypt.hash('Qwerty1!', 10),
         },
@@ -18,27 +18,43 @@ module.exports = {
     );
 
     await queryInterface.bulkInsert(
-      'Dictionaries',
+      'Skelets',
       [
         {
           userId: 1,
-          word: 'React',
-          description:
-            'Компонент (библиотека, фреймворк) для разработки клиентской части веб-сайта',
-          tags: ['frontend'],
+          name: 'Один',
+          description: 'Один описание',
+          status: true,
         },
         {
           userId: 1,
-          word: 'Sequelize',
-          description: 'Компонент для общения с базой данных в серверной части веб-сайта',
-          tags: ['db', 'server'],
+          name: 'Два',
+          description: 'Два описание',
+          status: false,
         },
         {
           userId: 1,
-          word: 'Morgan',
-          description:
-            'Компонент для получение логов в консоли в серверной части веб-сайта',
-          tags: ['backend'],
+          name: 'Три',
+          description: 'Три описание',
+          status: false,
+        },
+        {
+          userId: 1,
+          name: 'Четыре',
+          description: 'Четыре описание',
+          status: false,
+        },
+        {
+          userId: 1,
+          name: 'Пять',
+          description: 'Пять описание',
+          status: true,
+        },
+        {
+          userId: 1,
+          name: 'Шесть',
+          description: 'Шесть описание',
+          status: false,
         },
       ],
       {},
@@ -46,7 +62,7 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('Dictionaries', null, {});
+    await queryInterface.bulkDelete('Skelets', null, {});
     await queryInterface.bulkDelete('Users', null, {});
   },
 };

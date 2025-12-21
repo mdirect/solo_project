@@ -3,22 +3,25 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Dictionaries', {
+    await queryInterface.createTable('Skelets', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      word: {
+      name: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       description: {
         type: Sequelize.TEXT,
+        allowNull: false,
       },
-      tags: {
-        type: Sequelize.ARRAY(Sequelize.TEXT),
-        defaultValue: [],
+      status: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
       },
       userId: {
         type: Sequelize.INTEGER,
@@ -42,6 +45,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Dictionaries');
+    await queryInterface.dropTable('Skelets');
   },
 };

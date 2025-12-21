@@ -2,16 +2,16 @@
 
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Dictionary extends Model {
+  class Skelet extends Model {
     static associate(models) {
       this.belongsTo(models.User, { foreignKey: 'userId' });
     }
 
-    static validate({ word, description }) {
-      if (!word || typeof word !== 'string' || word.trim().length === 0) {
+    static validate({ name, description }) {
+      if (!name || typeof name !== 'string' || name.trim().length === 0) {
         return {
           isValid: false,
-          err: 'Название должно быть не пустой строкой',
+          err: 'Наименование должно быть не пустой строкой',
         };
       }
       if (
@@ -24,7 +24,6 @@ module.exports = (sequelize, DataTypes) => {
           err: 'Описание должно быть не пустой строкой',
         };
       }
-
       return {
         isValid: true,
         err: null,
@@ -32,28 +31,20 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
 
-  Dictionary.init(
+  Skelet.init(
     {
-      word: DataTypes.STRING,
+      name: DataTypes.STRING,
       description: DataTypes.TEXT,
       userId: DataTypes.INTEGER,
-      tags: {
-        type: DataTypes.ARRAY(DataTypes.TEXT),
-        defaultValue: [],
-        get() {
-          const rawValue = this.getDataValue('tags');
-          return rawValue || [];
-        },
-        set(value) {
-          const uniqueTags = [...new Set(value)];
-          this.setDataValue('tags', uniqueTags);
-        },
+      status: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
       },
     },
     {
       sequelize,
-      modelName: 'Dictionary',
+      modelName: 'Skelet',
     },
   );
-  return Dictionary;
+  return Skelet;
 };
