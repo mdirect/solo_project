@@ -7,6 +7,6 @@ const router = express.Router();
 
 router.use('/auth', authRouter);
 router.use('/user', userRouter);
-router.use('/skelet', skeletRouter);
+router.use('/skelets', skeletRouter);
 
 module.exports = router;

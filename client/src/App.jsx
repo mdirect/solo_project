@@ -30,10 +30,7 @@ function App() {
           <Route element={<Layout user={user} setUser={setUser} />}>
             <Route path="/" element={<MainPage user={user} />} />
             <Route path="/registery" element={<AuthPage setUser={setUser} />} />
-            <Route
-              path="/skeletpage"
-              element={<SkeletPage setUser={setUser} />}
-            />
+            <Route path="/skeletpage" element={<SkeletPage />} />
             <Route
               path="/account"
               element={<AccountPage user={user} setUser={setUser} />}

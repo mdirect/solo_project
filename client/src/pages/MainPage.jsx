@@ -1,25 +1,26 @@
 import React from "react";
-import Loader from "../shared/hocs/Loader";
 
 export default function MainPage({ user }) {
   return (
     <>
-      <Loader isLoading={!user.data}>
-        <div className="main_greeting">
-          <div>
-            <img className="main_img" alt="Скелет с дельфином" src="/title_skelet.png" />
-          </div>
-          <div className="main_text">
-            <h2>
-              Добро пожаловать
-              {user.status === "logged" ? `, ${user.data?.name}!` : `!`}
-            </h2>
-            <p>
-              <span>Skelet</span> — разберем ваш код по косточкам!
-            </p>
-          </div>
+      <div className="main_greeting">
+        <div>
+          <img
+            className="main_img"
+            alt="Скелет с дельфином"
+            src="/title_skelet.png"
+          />
         </div>
-      </Loader>
+        <div className="main_text">
+          <h2>
+            Добро пожаловать
+            {user.status === "logged" ? `, ${user.data?.name}!` : `!`}
+          </h2>
+          <p>
+            <span>Skelet</span> — разберем ваш код по косточкам!
+          </p>
+        </div>
+      </div>
     </>
   );
 }

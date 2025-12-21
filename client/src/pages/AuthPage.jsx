@@ -8,14 +8,16 @@ export default function AuthPage({ setUser }) {
 
   return (
     <>
-      {showLogin ? (
-        <LoginForm setUser={setUser} />
-      ) : (
-        <SignUpForm setUser={setUser} />
-      )}
-      <Button onClick={() => setShowLogin((prev) => !prev)}>
-        {showLogin ? "Зарегистрироваться" : "<< Назад"}
-      </Button>
+      <div>
+        {showLogin ? (
+          <LoginForm setUser={setUser} />
+        ) : (
+          <SignUpForm setUser={setUser} />
+        )}
+        <Button className="button_registry" onClick={() => setShowLogin((prev) => !prev)}>
+          {showLogin ? "Зарегистрироваться" : "<< Назад"}
+        </Button>
+      </div>
     </>
   );
 }

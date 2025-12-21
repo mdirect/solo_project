@@ -23,14 +23,21 @@ function Navigation({ user, setUser }) {
     <Navbar>
       <Container>
         <Col sm={4}>
-          <img style={{ width: "100px" }} alt="Skelet_logo" src="/skelet.png" />
-          {"  "}
+          <img
+            style={{ width: "100px", margin: "5px" }}
+            alt="Skelet_logo"
+            src="/skelet.png"
+          />
           My Skelet
         </Col>
         <Col sm={2}></Col>
         <Col sm={8}>
           <Navbar.Brand href="/">Главная</Navbar.Brand>
-          <Navbar.Brand href="/skeletpage">Скелет</Navbar.Brand>
+          {user?.data?.name ? (
+            <Navbar.Brand href="/skeletpage">Скелет</Navbar.Brand>
+          ) : (
+            ``
+          )}
           {user?.data?.name ? (
             <Navbar.Text>
               Вы вошли как:{" "}

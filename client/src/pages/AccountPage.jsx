@@ -27,14 +27,17 @@ export default function AccountPage({ user, setUser }) {
         {show ? (
           <EditUserForm setUser={setUser} />
         ) : (
-          <Card>
+          <Card className="account_card">
             <Col className="mb-8">Имя: {user?.data?.name}</Col>
             <Col className="mb-8">E-mail: {user?.data?.email}</Col>
             <Col className="mb-4">
-              <Button onClick={() => setShow((prev) => !prev)}>
+              <Button
+                className="account_button"
+                onClick={() => setShow((prev) => !prev)}
+              >
                 <UserPen />
               </Button>
-              <Button onClick={logoutHandler}>
+              <Button className="account_button" onClick={logoutHandler}>
                 <LogOut />
               </Button>
             </Col>
