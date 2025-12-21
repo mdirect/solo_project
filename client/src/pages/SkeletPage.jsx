@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Row from "react-bootstrap/Row";
 import SkeletCard from "../widgets/SkeletCard/SkeletCard";
-import axiosInstance from "../../../../dictionary/client/src/shared/lib/axiosInstance";
-import Loader from "../../../../dictionary/client/src/shared/hocs/Loader";
+import axiosInstance from "../shared/lib/axiosInstance";
+import Loader from "../shared/hocs/Loader";
 
 export default function SkeletPage() {
   const [skelets, setSkelets] = useState([]);
