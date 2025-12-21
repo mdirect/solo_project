@@ -42,9 +42,9 @@ function Navigation({ user, setUser }) {
             <Navbar.Text>
               Вы вошли как:{" "}
               <Navbar.Brand href="/account">{user?.data?.name}</Navbar.Brand>
-              <Button className="logout_button" onClick={logoutHandler}>
+              <button className="logout_button" onClick={logoutHandler}>
                 <LogOut />
-              </Button>
+              </button>
             </Navbar.Text>
           ) : (
             <Navbar.Brand href="/registery">Войти/Регистрация</Navbar.Brand>

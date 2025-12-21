@@ -7,8 +7,6 @@ class SkeletController {
       const { user } = res.locals;
       const skelets = await SkeletService.getSkelets(user.id);
 
-      if (skelets.length === 0) return res.status(200).send('Скелетов нет');
-
       return res.status(200).send(skelets);
     } catch (error) {
       console.log(error);
@@ -46,7 +44,7 @@ class SkeletController {
         userId: user.id,
       });
 
-      return res.status(200).send(newSkelet);
+      return res.status(201).send(newSkelet);
     } catch (error) {
       console.log(error);
       return res.status(500).send('Server Error');

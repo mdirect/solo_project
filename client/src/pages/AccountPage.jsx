@@ -31,15 +31,15 @@ export default function AccountPage({ user, setUser }) {
             <Col className="mb-8">Имя: {user?.data?.name}</Col>
             <Col className="mb-8">E-mail: {user?.data?.email}</Col>
             <Col className="mb-4">
-              <Button
+              <button
                 className="account_button"
                 onClick={() => setShow((prev) => !prev)}
               >
                 <UserPen />
-              </Button>
-              <Button className="account_button" onClick={logoutHandler}>
+              </button>
+              <button className="account_button" onClick={logoutHandler}>
                 <LogOut />
-              </Button>
+              </button>
             </Col>
           </Card>
         )}
