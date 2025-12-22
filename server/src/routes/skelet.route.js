@@ -8,7 +8,7 @@ const router = express.Router();
 router.get('/', verifyAccessToken, SkeletController.getAllSkelets);
 router.post('/', verifyAccessToken, SkeletController.createSkelet);
 router.get('/:id', isValidId, SkeletController.getSkeletById);
-router.patch('/:id', isValidId, verifyAccessToken, SkeletController.updateSkelet);
+router.put('/:id', isValidId, verifyAccessToken, SkeletController.updateSkelet);
 router.delete('/:id', isValidId, verifyAccessToken, SkeletController.deleteSkelet);
 
 module.exports = router;

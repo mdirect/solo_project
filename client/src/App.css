@@ -47,7 +47,31 @@ nav {
   color: #333333;
 }
 
-.account_button:hover {
+.button_edit_form,
+.button_delete,
+.button_edit {
+  margin: 5px;
+  padding: 5px 10px;
+  border: 0px;
+  border-radius: 10px;
+  background-color: rgba(91, 176, 229, 0.4);
+  color: #333333;
+}
+
+.button_delete:hover {
+  border-radius: 10px;
+  background-color: rgba(198, 123, 86, 0.473);
+  color: rgb(0, 157, 255);
+}
+
+.button_edit:hover {
+  border-radius: 10px;
+  background-color: rgba(116, 198, 86, 0.473);
+  color: rgb(0, 157, 255);
+}
+
+.account_button:hover,
+.button_edit_form:hover {
   border-radius: 10px;
   background-color: rgba(91, 176, 229, 0.6);
   color: whitesmoke;
@@ -120,6 +144,10 @@ nav {
   min-width: 40vw;
   max-height: 20vh;
   padding: 20px;
+}
+
+.skelet_card {
+  text-align: left;
 }
 
 footer {

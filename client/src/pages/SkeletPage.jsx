@@ -77,33 +77,34 @@ export default function SkeletPage({ user }) {
 
   return (
     <>
-      {/* <Loader isLoading={user.length === 0}> */}
-      <Row>
-        {skelets.length === 0
-          ? "Здесь еще нет скелетов, но ты можешь их добавить..."
-          : skelets.map((obj) => (
-              <SkeletCard
-                key={obj.id}
-                skelet={obj}
-                onDelete={() => deleteHandler(obj.id)}
-                onUpdate={updateHandler}
-              />
-            ))}
-        {user.status !== "guest" ? (
-          <Card>
-            <button
-              className="button_add_form"
-              onClick={() => showAddForm((prev) => !prev)}
-            >
-              {addForm ? <X /> : <SquarePlus />}
-            </button>
-            {addForm ? <AddForm submitHandler={submitHandler} /> : ``}
-          </Card>
-        ) : (
-          ``
-        )}
-      </Row>
-      {/* </Loader> */}
+      <Loader isLoading={!user.data?.id}>
+        <Row>
+          {skelets.length === 0
+            ? "Здесь еще нет скелетов, но ты можешь их добавить..."
+            : skelets.map((obj) => (
+                <SkeletCard
+                  key={obj.id}
+                  skelet={obj}
+                  onDelete={() => deleteHandler(obj.id)}
+                  onUpdate={updateHandler}
+                  user={user}
+                />
+              ))}
+          {user.status !== "guest" ? (
+            <Card>
+              <button
+                className="button_add_form"
+                onClick={() => showAddForm((prev) => !prev)}
+              >
+                {addForm ? <X /> : <SquarePlus />}
+              </button>
+              {addForm ? <AddForm submitHandler={submitHandler} /> : ``}
+            </Card>
+          ) : (
+            ``
+          )}
+        </Row>
+      </Loader>
     </>
   );
 }
