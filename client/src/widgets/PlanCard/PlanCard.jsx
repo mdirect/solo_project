@@ -5,17 +5,17 @@ import Card from "react-bootstrap/Card";
 import { Trash, SquarePen } from "lucide-react";
 import EditForm from "../../features/EditForm/EditForm";
 
-export default function SkeletCard({ user, skelet, onDelete, onUpdate }) {
+export default function PlanCard({ user, plan, onDelete, onUpdate }) {
   const [showEditForm, setShowEditForm] = useState(false);
-  const [skeletUpd, setSkeletUpd] = useState(skelet);
+  const [planUpd, setPlanUpd] = useState(plan);
 
   return (
     <>
-      <Card className="skelet_card">
+      <Card className="plan_card">
         <Card.Body>
           <Row>
             <Col sm={2}>
-              {skelet.status ? (
+              {plan.status ? (
                 <Card.Text style={{ color: "rgba(116, 198, 86)" }}>
                   ready
                 </Card.Text>
@@ -27,7 +27,7 @@ export default function SkeletCard({ user, skelet, onDelete, onUpdate }) {
             </Col>
             <Col sm={2}></Col>
             <Col sm={8}>
-              <Card.Title>{skelet.name}</Card.Title>
+              <Card.Title>{plan.name}</Card.Title>
             </Col>
           </Row>
           <Row>
@@ -35,11 +35,11 @@ export default function SkeletCard({ user, skelet, onDelete, onUpdate }) {
               <Card.Img
                 style={{ maxWidth: "225px" }}
                 alt="image"
-                src={skelet.image || "./skelet_icon.png"}
+                src={plan.image || "./plan_icon.png"}
               ></Card.Img>
             </Col>
             <Col sm={8}>
-              <Card.Subtitle>{skelet.description}</Card.Subtitle>
+              <Card.Subtitle>{plan.description}</Card.Subtitle>
             </Col>
           </Row>
           <Row>
@@ -48,15 +48,15 @@ export default function SkeletCard({ user, skelet, onDelete, onUpdate }) {
               <EditForm
                 setShowEditForm={setShowEditForm}
                 onUpdate={onUpdate}
-                skeletUpd={skeletUpd}
-                setSkeletUpd={setSkeletUpd}
+                planUpd={planUpd}
+                setPlanUpd={setPlanUpd}
                 onDelete={onDelete}
               />
             ) : (
               ""
             )}
             <Col sm={2}>
-              {user.data.id === skelet.userId && !showEditForm ? (
+              {user.data.id === plan.userId && !showEditForm ? (
                 <button
                   className="button_edit"
                   onClick={() => setShowEditForm((prev) => !prev)}
@@ -66,7 +66,7 @@ export default function SkeletCard({ user, skelet, onDelete, onUpdate }) {
               ) : (
                 ""
               )}
-              {user.data.id === skelet.userId && !showEditForm ? (
+              {user.data.id === plan.userId && !showEditForm ? (
                 <button className="button_delete" onClick={onDelete}>
                   <Trash />
                 </button>

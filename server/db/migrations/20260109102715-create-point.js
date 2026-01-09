@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Users', {
+    await queryInterface.createTable('Points', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -14,19 +14,40 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      password: {
+      image: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      email: {
-        type: Sequelize.STRING,
+      description: {
+        type: Sequelize.TEXT,
         allowNull: false,
-        unique: true,
       },
-      active: {
+      status: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
         defaultValue: true,
+      },
+      x: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0,
+      },
+      y: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0,
+      },
+      layer: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        autoIncrement: true,
+      },
+      planId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Users',
+          key: 'id',
+        },
+        onDelete: 'CASCADE',
       },
       createdAt: {
         allowNull: false,
@@ -41,6 +62,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Users');
+    await queryInterface.dropTable('Points');
   },
 };

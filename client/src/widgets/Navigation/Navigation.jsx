@@ -25,16 +25,19 @@ function Navigation({ user, setUser }) {
         <Col sm={4}>
           <img
             style={{ width: "100px", margin: "5px" }}
-            alt="Skelet_logo"
-            src="/skelet.png"
+            alt="Plan_logo"
+            src="/plan.png"
           />
-          My Skelet
+          My Plan
         </Col>
         <Col sm={2}></Col>
         <Col sm={8}>
           <Navbar.Brand href="/">Главная</Navbar.Brand>
           {user?.data?.name ? (
-            <Navbar.Brand href="/skeletpage">Скелет</Navbar.Brand>
+            <>
+              <Navbar.Brand href="/planpage">План</Navbar.Brand>
+              <Navbar.Brand href="/myplans">Мой план</Navbar.Brand>
+            </>
           ) : (
             ``
           )}

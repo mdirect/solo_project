@@ -7,8 +7,8 @@ export default function MainPage({ user }) {
         <div>
           <img
             className="main_img"
-            alt="Скелет с дельфином"
-            src="/title_skelet.png"
+            alt="План с дельфином"
+            src="/title_plan.png"
           />
         </div>
         <div className="main_text">
@@ -17,7 +17,7 @@ export default function MainPage({ user }) {
             {user.status === "logged" ? `, ${user.data?.name}!` : `!`}
           </h2>
           <p>
-            <span>Skelet</span> — разберем ваш код по косточкам!
+            <span>Plan</span> — разберем ваш код по косточкам!
           </p>
         </div>
       </div>

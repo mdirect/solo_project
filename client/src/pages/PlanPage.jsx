@@ -3,26 +3,26 @@ import { SquarePlus, X } from "lucide-react";
 import Row from "react-bootstrap/Row";
 import Card from "react-bootstrap/Card";
 import AddForm from "../features/AddForm/AddForm";
-import SkeletCard from "../widgets/SkeletCard/SkeletCard";
+import PlanCard from "../widgets/PlanCard/PlanCard";
 import axiosInstance from "../shared/lib/axiosInstance";
 import Loader from "../shared/hocs/Loader";
 
-export default function SkeletPage({ user }) {
-  const [skelets, setSkelets] = useState([]);
+export default function PlanPage({ user }) {
+  const [plans, setPlans] = useState([]);
   const [addForm, showAddForm] = useState(false);
 
-  async function getSkelets() {
+  async function getPlans() {
     try {
-      const { data } = await axiosInstance(`/api/skelets`);
+      const { data } = await axiosInstance(`/api/plans`);
 
-      if (data) setSkelets(data);
+      if (data) setPlans(data);
     } catch (error) {
       console.log(error);
     }
   }
 
   useEffect(() => {
-    getSkelets();
+    getPlans();
   }, []);
 
   const submitHandler = async (event) => {
@@ -30,7 +30,7 @@ export default function SkeletPage({ user }) {
     try {
       const targetData = event.target;
       const dataForApi = Object.fromEntries(new FormData(targetData));
-      const newSkelet = {
+      const newPlan = {
         name: dataForApi.name,
         description: dataForApi.description,
         status: dataForApi.status,
@@ -38,10 +38,10 @@ export default function SkeletPage({ user }) {
 
       if (!dataForApi.name || !dataForApi.description || !dataForApi.status)
         return alert("Заполните все поля");
-      const response = await axiosInstance.post("/api/skelets", newSkelet);
+      const response = await axiosInstance.post("/api/plans", newPlan);
 
       if (response.status === 201) {
-        setSkelets((prev) => [response.data, ...prev]);
+        setPlans((prev) => [response.data, ...prev]);
         targetData.reset();
       }
       showAddForm((prev) => !prev);
@@ -50,17 +50,15 @@ export default function SkeletPage({ user }) {
     }
   };
 
-  const updateHandler = async (id, updateSkelet) => {
+  const updateHandler = async (id, updatePlan) => {
     try {
-      const response = await axiosInstance.put(`/api/skelets/${id}`, {
-        name: updateSkelet.name,
-        description: updateSkelet.description,
-        status: updateSkelet.status,
+      const response = await axiosInstance.put(`/api/plans/${id}`, {
+        name: updatePlan.name,
+        description: updatePlan.description,
+        status: updatePlan.status,
       });
 
-      setSkelets((prev) =>
-        prev.map((el) => (el.id === id ? response.data : el))
-      );
+      setPlans((prev) => prev.map((el) => (el.id === id ? response.data : el)));
     } catch (error) {
       console.error(error);
     }
@@ -68,8 +66,8 @@ export default function SkeletPage({ user }) {
 
   const deleteHandler = async (id) => {
     try {
-      await axiosInstance.delete(`/api/skelets/${id}`);
-      setSkelets(skelets.filter((el) => el.id !== id));
+      await axiosInstance.delete(`/api/plans/${id}`);
+      setPlans(plans.filter((el) => el.id !== id));
     } catch (error) {
       console.log(error);
     }
@@ -79,12 +77,12 @@ export default function SkeletPage({ user }) {
     <>
       <Loader isLoading={!user.data?.id}>
         <Row>
-          {skelets.length === 0
-            ? "Здесь еще нет скелетов, но ты можешь их добавить..."
-            : skelets.map((obj) => (
-                <SkeletCard
+          {plans.length === 0
+            ? "Здесь еще нет планов, но ты можешь их добавить..."
+            : plans.map((obj) => (
+                <PlanCard
                   key={obj.id}
-                  skelet={obj}
+                  plan={obj}
                   onDelete={() => deleteHandler(obj.id)}
                   onUpdate={updateHandler}
                   user={user}

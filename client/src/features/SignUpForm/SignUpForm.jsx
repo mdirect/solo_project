@@ -80,7 +80,7 @@ function SignUpForm({ setUser }) {
           type="submit"
           className={styles.submitButton}
           onClick={() => {
-            navigate(`/skeletpage`);
+            navigate(`/planpage`);
           }}
         >
           Подтвердить

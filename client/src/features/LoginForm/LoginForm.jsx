@@ -19,7 +19,7 @@ function LoginForm({ setUser }) {
 
       setUser({ status: "logged", data: res.user });
       setAccessToken(res.accessToken);
-      navigate(`/skeletpage`);
+      navigate(`/planpage`);
     } catch (error) {
       console.log(error);
     }
@@ -53,7 +53,7 @@ function LoginForm({ setUser }) {
           type="submit"
           className={styles.submitButton}
           onClick={() => {
-            navigate(`/skeletpage`);
+            navigate(`/planpage`);
           }}
         >
           Подтвердить

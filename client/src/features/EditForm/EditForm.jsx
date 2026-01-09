@@ -5,15 +5,15 @@ import Form from "react-bootstrap/Form";
 import { Trash } from "lucide-react";
 
 function EditForm({
-  skeletUpd,
-  setSkeletUpd,
+  planUpd,
+  setPlanUpd,
   onUpdate,
   setShowEditForm,
   onDelete,
 }) {
   const submitHandler = (event) => {
     event.preventDefault();
-    onUpdate(skeletUpd.id, skeletUpd);
+    onUpdate(planUpd.id, planUpd);
     setShowEditForm(false);
   };
 
@@ -28,10 +28,8 @@ function EditForm({
           <Col sm="10">
             <Form.Control
               type="text"
-              value={skeletUpd.name}
-              onChange={(ev) =>
-                setSkeletUpd({ ...skeletUpd, name: ev.target.value })
-              }
+              value={planUpd.name}
+              onChange={(ev) => setPland({ ...planUpd, name: ev.target.value })}
               placeholder="Наименование"
               name="name"
               autoFocus
@@ -45,9 +43,9 @@ function EditForm({
           <Col sm="10">
             <Form.Control
               type="text"
-              value={skeletUpd.description}
+              value={planUpd.description}
               onChange={(ev) =>
-                setSkeletUpd({ ...skeletUpd, description: ev.target.value })
+                setPland({ ...planUpd, description: ev.target.value })
               }
               placeholder="Описание"
               name="description"
@@ -61,9 +59,9 @@ function EditForm({
           <Col sm="4">
             <Form.Select
               aria-label="Статус"
-              value={skeletUpd.status}
+              value={planUpd.status}
               onChange={(ev) =>
-                setSkeletUpd({ ...skeletUpd, status: ev.target.value })
+                setPland({ ...planUpd, status: ev.target.value })
               }
               name="status"
             >

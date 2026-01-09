@@ -2,13 +2,13 @@
 
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Skelet extends Model {
+  class Plan extends Model {
     static associate(models) {
       this.belongsTo(models.User, { foreignKey: 'userId' });
     }
 
-    static validate({ name, description }) {
-      if (!name || typeof name !== 'string' || name.trim().length === 0) {
+    static validate({ title, description }) {
+      if (!title || typeof title !== 'string' || title.trim().length === 0) {
         return {
           isValid: false,
           err: 'Наименование должно быть не пустой строкой',
@@ -31,20 +31,17 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
 
-  Skelet.init(
+  Plan.init(
     {
-      name: DataTypes.STRING,
+      title: DataTypes.STRING,
+      image: DataTypes.STRING,
       description: DataTypes.TEXT,
       userId: DataTypes.INTEGER,
-      status: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false,
-      },
     },
     {
       sequelize,
-      modelName: 'Skelet',
+      modelName: 'Plan',
     },
   );
-  return Skelet;
+  return Plan;
 };
