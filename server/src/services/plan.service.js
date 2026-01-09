@@ -9,12 +9,12 @@ class PlanService {
     return Plan.findByPk(id);
   }
 
-  static async createPlan({ name, description, status, userId }) {
-    return Plan.create({ name, description, status, userId });
+  static async createPlan({ title, description, image, userId }) {
+    return Plan.create({ title, description, image, userId });
   }
 
-  static async updatePlan(id, { name, description, status }) {
-    await Plan.update({ name, description, status }, { where: { id } });
+  static async updatePlan(id, { title, description, image }) {
+    await Plan.update({ title, description, image }, { where: { id } });
 
     return Plan.findByPk(id);
   }

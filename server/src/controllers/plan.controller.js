@@ -33,14 +33,14 @@ class PlanController {
       if (!req.body) return res.status(400).send('Заполни данные');
 
       const { user } = res.locals;
-      const { name, description, status } = req.body;
-      const { isValid, err } = Plan.validate({ name, description, status });
+      const { title, description, image } = req.body;
+      const { isValid, err } = Plan.validate({ title, description, image });
 
       if (!isValid) return res.status(400).send(err);
       const newPlan = await PlanService.createPlan({
-        name,
+        title,
         description,
-        status,
+        image,
         userId: user.id,
       });
 
@@ -60,14 +60,14 @@ class PlanController {
       if (!plan) return res.status(200).send('Такого плана нет');
       if (user.id !== plan.userId) return res.status(400).send('Это не ваш план');
       if (!req.body) return res.status(400).send('Заполни данные');
-      const { name, description, status } = req.body;
-      const { isValid, err } = Plan.validate({ name, description, status });
+      const { title, description, image } = req.body;
+      const { isValid, err } = Plan.validate({ title, description, image });
 
       if (!isValid) return res.status(400).send(err);
       const updatePlan = await PlanService.updatePlan(id, {
-        name,
+        title,
         description,
-        status,
+        image,
       });
 
       return res.status(200).json(updatePlan);
