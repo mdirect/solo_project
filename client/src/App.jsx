@@ -31,7 +31,7 @@ function App() {
           <Route element={<Layout user={user} setUser={setUser} />}>
             <Route path="/" element={<MainPage user={user} />} />
             <Route path="/registery" element={<AuthPage setUser={setUser} />} />
-            <Route path="/planpage" element={<PlanPage user={user} />} />
+            <Route path="/oneplan/:planId" element={<PlanPage user={user} />} />
             <Route path="/myplans" element={<MyPlansPage user={user} />} />
             <Route
               path="/account"

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { SquarePlus, X } from "lucide-react";
 import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import AddForm from "../features/AddForm/AddForm";
 import PlanCard from "../widgets/PlanCard/PlanCard";
@@ -31,12 +32,12 @@ export default function MyPlansPage({ user }) {
       const targetData = event.target;
       const dataForApi = Object.fromEntries(new FormData(targetData));
       const newPlan = {
-        name: dataForApi.name,
+        title: dataForApi.title,
         description: dataForApi.description,
-        status: dataForApi.status,
+        image: dataForApi.image,
       };
 
-      if (!dataForApi.name || !dataForApi.description || !dataForApi.status)
+      if (!dataForApi.title || !dataForApi.description || !dataForApi.image)
         return alert("Заполните все поля");
       const response = await axiosInstance.post("/api/plans", newPlan);
 
@@ -53,9 +54,9 @@ export default function MyPlansPage({ user }) {
   const updateHandler = async (id, updatePlan) => {
     try {
       const response = await axiosInstance.put(`/api/plans/${id}`, {
-        name: updatePlan.name,
+        title: updatePlan.title,
         description: updatePlan.description,
-        status: updatePlan.status,
+        image: updatePlan.image,
       });
 
       setPlans((prev) => prev.map((el) => (el.id === id ? response.data : el)));
@@ -80,24 +81,30 @@ export default function MyPlansPage({ user }) {
           {plans.length === 0
             ? "Здесь еще нет планов, но ты можешь их добавить..."
             : plans.map((obj) => (
-                <PlanCard
-                  key={obj.id}
-                  plan={obj}
-                  onDelete={() => deleteHandler(obj.id)}
-                  onUpdate={updateHandler}
-                  user={user}
-                />
+                <>
+                  <Col sm={4}>
+                    <PlanCard
+                      key={obj.id}
+                      plan={obj}
+                      onDelete={() => deleteHandler(obj.id)}
+                      onUpdate={updateHandler}
+                      user={user}
+                    />
+                  </Col>
+                </>
               ))}
           {user.status !== "guest" ? (
-            <Card>
-              <button
-                className="button_add_form"
-                onClick={() => showAddForm((prev) => !prev)}
-              >
-                {addForm ? <X /> : <SquarePlus />}
-              </button>
-              {addForm ? <AddForm submitHandler={submitHandler} /> : ``}
-            </Card>
+            <Col sm={4}>
+              <Card>
+                <button
+                  className="button_add_form"
+                  onClick={() => showAddForm((prev) => !prev)}
+                >
+                  {addForm ? <X /> : <SquarePlus />}
+                </button>
+                {addForm ? <AddForm submitHandler={submitHandler} /> : ``}
+              </Card>
+            </Col>
           ) : (
             ``
           )}

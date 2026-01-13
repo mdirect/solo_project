@@ -7,20 +7,20 @@ import Button from "react-bootstrap/Button";
 function AddForm({ submitHandler }) {
   return (
     <>
-      <Form onSubmit={submitHandler}>
+      <Form stile={{ padding: "5px" }} onSubmit={submitHandler}>
         <Form.Group as={Row} className="mb-3">
-          <Form.Label column sm="2">
-            Наименование
+          <Form.Label column sm="4">
+            Название
           </Form.Label>
-          <Col sm="10">
-            <Form.Control type="text" placeholder="Наименование" name="name" />
+          <Col sm="8">
+            <Form.Control type="text" placeholder="Наименование" name="title" />
           </Col>
         </Form.Group>
         <Form.Group as={Row} className="mb-3">
-          <Form.Label column sm="2">
+          <Form.Label column sm="4">
             Описание
           </Form.Label>
-          <Col sm="10">
+          <Col sm="8">
             <Form.Control
               type="text"
               placeholder="Описание"
@@ -29,16 +29,12 @@ function AddForm({ submitHandler }) {
           </Col>
         </Form.Group>
         <Form.Group as={Row} className="mb-3">
-          <Form.Label column sm="2">
-            Статус
+          <Form.Label column sm="4">
+            Картинка
           </Form.Label>
-          <Col sm="4">
-            <Form.Select aria-label="Статус" name="status">
-              <option value="false">Не сделано</option>
-              <option value="true">Сделано</option>
-            </Form.Select>
+          <Col sm="8">
+            <Form.Control type="text" placeholder="Изображение" name="image" />
           </Col>
-          <Col sm="6"></Col>
         </Form.Group>
         <Button variant="primary" type="submit">
           Добавить

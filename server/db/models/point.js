@@ -4,7 +4,7 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Point extends Model {
     static associate(models) {
-      this.belongsTo(models.User, { foreignKey: 'userId' });
+      this.belongsTo(models.Plan, { foreignKey: 'planId' });
     }
 
     static validate({ name, description }) {

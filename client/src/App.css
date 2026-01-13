@@ -147,7 +147,8 @@ nav {
 }
 
 .plan_card {
-  text-align: left;
+  align-items: center;
+  height: 95%;
 }
 
 footer {

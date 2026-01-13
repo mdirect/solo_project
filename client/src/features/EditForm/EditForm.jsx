@@ -22,30 +22,32 @@ function EditForm({
       <br />
       <Form onSubmit={submitHandler}>
         <Form.Group as={Row} className="mb-3">
-          <Form.Label column sm="2">
-            Наименование
+          <Form.Label column sm="4">
+            Название
           </Form.Label>
-          <Col sm="10">
+          <Col sm="8">
             <Form.Control
               type="text"
-              value={planUpd.name}
-              onChange={(ev) => setPland({ ...planUpd, name: ev.target.value })}
+              value={planUpd.title}
+              onChange={(ev) =>
+                setPlanUpd({ ...planUpd, title: ev.target.value })
+              }
               placeholder="Наименование"
-              name="name"
+              name="title"
               autoFocus
             />
           </Col>
         </Form.Group>
         <Form.Group as={Row} className="mb-3">
-          <Form.Label column sm="2">
+          <Form.Label column sm="4">
             Описание
           </Form.Label>
-          <Col sm="10">
+          <Col sm="8">
             <Form.Control
               type="text"
               value={planUpd.description}
               onChange={(ev) =>
-                setPland({ ...planUpd, description: ev.target.value })
+                setPlanUpd({ ...planUpd, description: ev.target.value })
               }
               placeholder="Описание"
               name="description"
@@ -53,33 +55,31 @@ function EditForm({
           </Col>
         </Form.Group>
         <Form.Group as={Row} className="mb-3">
-          <Form.Label column sm="2">
-            Статус
+          <Form.Label column sm="4">
+            Картинка
           </Form.Label>
-          <Col sm="4">
-            <Form.Select
-              aria-label="Статус"
-              value={planUpd.status}
+          <Col sm="8">
+            <Form.Control
+              type="text"
+              value={planUpd.image}
               onChange={(ev) =>
-                setPland({ ...planUpd, status: ev.target.value })
+                setPlanUpd({ ...planUpd, image: ev.target.value })
               }
-              name="status"
-            >
-              <option value="false">Не сделано</option>
-              <option value="true">Сделано</option>
-            </Form.Select>
+              placeholder="Описание"
+              name="image"
+            />
           </Col>
-          <Col sm="6"></Col>
         </Form.Group>
         <Row>
-          <Col></Col>
-          <Col sm={4}>
+          <Col sm="4">
             <button
               className="button_edit_form"
               onClick={() => setShowEditForm((prev) => !prev)}
             >
               Скрыть
             </button>
+          </Col>
+          <Col sm="4">
             <button
               className="button_edit_form"
               variant="primary"
@@ -87,6 +87,8 @@ function EditForm({
             >
               Отправить
             </button>
+          </Col>
+          <Col sm="4">
             <button className="button_delete" onClick={onDelete}>
               <Trash />
             </button>

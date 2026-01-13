@@ -5,7 +5,8 @@ class PointController {
   static async getAllPoints(req, res) {
     try {
       const { user } = res.locals;
-      const points = await PointService.getPoints(user.id);
+      const { planId } = req.query;
+      const points = await PointService.getPoints(planId);
 
       return res.status(200).send(points);
     } catch (error) {
@@ -19,7 +20,7 @@ class PointController {
       const { id } = req.params;
       const point = await PointService.getPointById(id);
 
-      if (!point) return res.status(200).send('Такого плана нет');
+      if (!point) return res.status(200).send('Такого пункта нет');
 
       return res.status(200).send(point);
     } catch (error) {
@@ -41,7 +42,7 @@ class PointController {
         name,
         description,
         status,
-        userId: user.id,
+        planId: user.id,
       });
 
       return res.status(201).send(newPoint);
@@ -57,8 +58,8 @@ class PointController {
       const { id } = req.params;
       const point = await PointService.getPointById(id);
 
-      if (!point) return res.status(200).send('Такого плана нет');
-      if (user.id !== point.userId) return res.status(400).send('Это не ваш план');
+      if (!point) return res.status(200).send('Такого пункта нет');
+      if (user.id !== point.planId) return res.status(400).send('Это не ваш пункт');
       if (!req.body) return res.status(400).send('Заполни данные');
       const { name, description, status } = req.body;
       const { isValid, err } = Point.validate({ name, description, status });
@@ -83,13 +84,13 @@ class PointController {
       const { id } = req.params;
       const point = await PointService.getPointById(id);
 
-      if (!point) return res.status(200).send('Такого плана нет');
-      if (user.id !== point.userId) return res.status(400).send('Это не ваш план');
+      if (!point) return res.status(200).send('Такого пункта нет');
+      if (user.id !== point.planId) return res.status(400).send('Это не ваш пункт');
       const deletePoint = await PointService.deletePoint(id);
 
-      if (!deletePoint) return res.status(200).send('План не удален');
+      if (!deletePoint) return res.status(200).send('Пункт не удален');
 
-      return res.status(204).send('План удален');
+      return res.status(204).send('Пункт удален');
     } catch (error) {
       console.log(error);
       return res.status(500).send('Server Error');
